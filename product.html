@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | Fluff Plush</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="product-styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html">
+            <img src="images/Logo.jpg" alt="Fluff Plush Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="product.html">PRODUCTS</a></li>
+                <li><a href="cart.html">CART</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- products section -->
+    <section class="products_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2>Available Products</h2>
+            </div>
+            <div class="products_grid">
+                <div class="product_item" onclick="addToCart('Kirby', 850, 'images/Kirby.jpg')">
+                    <img src="images/Kirby.jpg" alt="Kirby">
+                    <h3>Kirby</h3>
+                    <p>₱850.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Pomni', 800, 'images/Pomni.jpg')">
+                    <img src="images/Pomni.jpg" alt="Pomni">
+                    <h3>Pomni</h3>
+                    <p>₱800.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Rimuru', 1000, 'images/Rimuru.jpg')">
+                    <img src="images/Rimuru.jpg" alt="Rimuru">
+                    <h3>Rimuru</h3>
+                    <p>₱1000.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Mewo', 900, 'images/Mewo.jpg')">
+                    <img src="images/Mewo.jpg" alt="Mewo">
+                    <h3>Mewo</h3>
+                    <p>₱900.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Freddy', 800, 'images/Freddy.jpg')">
+                    <img src="images/Freddy.jpg" alt="Freddy">
+                    <h3>Freddy</h3>
+                    <p>₱800.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Charmander', 850, 'images/Charmander.jpg')">
+                    <img src="images/Charmander.jpg" alt="Charmander">
+                    <h3>Charmander</h3>
+                    <p>₱850.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Capybara', 700, 'images/Capybara.jpg')">
+                    <img src="images/Capybara.jpg" alt="Capybara">
+                    <h3>Capybara</h3>
+                    <p>₱700.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Paimon', 1200, 'images/Paimon.jpg')">
+                    <img src="images/Paimon.jpg" alt="Paimon">
+                    <h3>Paimon</h3>
+                    <p>₱1200.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Hakurei', 1100, 'images/Hakurei.jpg')">
+                    <img src="images/Hakurei.jpg" alt="Hakurei">
+                    <h3>Hakurei</h3>
+                    <p>₱1100.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Frieren', 1200, 'images/Frieren.jpg')">
+                    <img src="images/Frieren.jpg" alt="Frieren">
+                    <h3>Frieren</h3>
+                    <p>₱1200.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Bocchi', 1200, 'images/Bocchi.jpg')">
+                    <img src="images/Bocchi.jpg" alt="Bocchi">
+                    <h3>Bocchi</h3>
+                    <p>₱1200.00</p>
+                </div>
+                <div class="product_item" onclick="addToCart('Axolotl', 900, 'images/Axolotl.jpg')">
+                    <img src="images/Axolotl.jpg" alt="Axolotl">
+                    <h3>Axolotl</h3>
+                    <p>₱900.00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end products section -->
+
+    <footer>
+        <p>&copy; 2024 Fluff Plush / Jobhert Medina</p>
+        <p>Disclaimer: Images used are at the notepad with their original store.</p>
+    </footer>
+    <script src="cart.js"></script>
+    <script>
+        function addToCart(name, price, image) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let product = cart.find(item => item.name === name);
+
+            if (product) {
+                product.quantity += 1;
+            } else {
+                cart.push({ name, price, image, quantity: 1 });
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(name + " has been added to the cart");
+            window.location.href = 'cart.html';
+        }
+    </script>
+</body>
+</html>
